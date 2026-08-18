@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127918;</text></svg>" />
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
+    <span class="theme-icon">&#9789;</span>
+  </button>
+
+  <main class="app">
+
+    <!-- ============ SETUP SCREEN ============ -->
+    <section id="setup-screen" class="screen is-active" aria-labelledby="setup-title">
+      <h1 id="setup-title" class="title">Tic<span class="title-x">Tac</span>Toe</h1>
+      <p class="subtitle">Three in a row wins. Pick your setup.</p>
+
+      <form id="setup-form" class="setup-card" novalidate>
+
+        <fieldset class="field">
+          <legend class="field-label">Game mode</legend>
+          <div class="segmented" role="radiogroup" aria-label="Game mode">
+            <label class="segment">
+              <input type="radio" name="mode" value="2p" checked />
+              <span>2 Players</span>
+            </label>
+            <label class="segment">
+              <input type="radio" name="mode" value="ai" />
+              <span>vs Computer</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field" id="difficulty-field" hidden>
+          <legend class="field-label">Difficulty</legend>
+          <div class="segmented" role="radiogroup" aria-label="Difficulty">
+            <label class="segment">
+              <input type="radio" name="difficulty" value="easy" />
+              <span>Easy</span>
+            </label>
+            <label class="segment">
+              <input type="radio" name="difficulty" value="medium" checked />
+              <span>Medium</span>
+            </label>
+            <label class="segment">
+              <input type="radio" name="difficulty" value="hard" />
+              <span>Impossible</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend class="field-label" id="mark-label">Play as</legend>
+          <div class="segmented" role="radiogroup" aria-labelledby="mark-label">
+            <label class="segment">
+              <input type="radio" name="mark" value="X" checked />
+              <span class="mark-x">X</span>
+            </label>
+            <label class="segment">
+              <input type="radio" name="mark" value="O" />
+              <span class="mark-o">O</span>
+            </label>
+          </div>
+          <p class="hint" id="mark-hint">X always moves first in round one.</p>
+        </fieldset>
+
+        <div class="field">
+          <label class="field-label" for="name-1" id="name-1-label">Player 1 name</label>
+          <input id="name-1" class="text-input" type="text" maxlength="14"
+                 placeholder="Player 1" autocomplete="off" />
+        </div>
+
+        <div class="field" id="name-2-wrap">
+          <label class="field-label" for="name-2" id="name-2-label">Player 2 name</label>
+          <input id="name-2" class="text-input" type="text" maxlength="14"
+                 placeholder="Player 2" autocomplete="off" />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Start Game</button>
+      </form>
+    </section>
+
+    <!-- ============ GAME SCREEN ============ -->
+    <section id="game-screen" class="screen" aria-labelledby="status">
+      <div class="scoreboard">
+        <div class="score-card" id="card-X">
+          <span class="score-mark mark-x">X</span>
+          <span class="score-name" id="score-name-X">Player 1</span>
+          <span class="score-value" id="score-X">0</span>
+        </div>
+        <div class="score-card score-card--draw">
+          <span class="score-mark">&#8212;</span>
+          <span class="score-name">Draws</span>
+          <span class="score-value" id="score-draw">0</span>
+        </div>
+        <div class="score-card" id="card-O">
+          <span class="score-mark mark-o">O</span>
+          <span class="score-name" id="score-name-O">Player 2</span>
+          <span class="score-value" id="score-O">0</span>
+        </div>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite">Player 1's turn</p>
+
+      <div id="board" class="board" role="grid" aria-label="Tic tac toe board">
+        <!-- cells injected by script.js -->
+      </div>
+
+      <div class="controls">
+        <button type="button" class="btn btn-primary" id="btn-next">Next Round</button>
+        <button type="button" class="btn" id="btn-reset">New Match</button>
+        <button type="button" class="btn btn-ghost" id="btn-settings">Change Settings</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
